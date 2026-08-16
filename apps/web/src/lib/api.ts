@@ -29,8 +29,6 @@ import type {
   AiTargetLanguage,
   AiTone,
   AiStreamEvent,
-  AiTagSuggestionsRequestInput,
-  AiTagSuggestionsResponse,
   PublicMemoShare,
   TagSummary,
   TiptapDoc,
@@ -643,13 +641,6 @@ export const api = {
       body: JSON.stringify({}),
     });
   },
-
-  suggestAiTags: (payload: AiTagSuggestionsRequestInput, signal?: AbortSignal) =>
-    request<AiTagSuggestionsResponse>("/api/v1/ai/tag-suggestions", {
-      method: "POST",
-      body: JSON.stringify(payload),
-      signal,
-    }),
 
   streamAiGeneration: async (
     payload: {

@@ -930,10 +930,8 @@ export const MobileStandaloneTiptapEditor = ({
             onOpen={() => setNotebookSheetOpen(true)}
           />
           <EditorTagPicker
-            contentMarkdown={fallbackMarkdown}
             disabled={!memo || saveState === "loading"}
             loadTags={loadTags}
-            title={title}
             value={tagsText}
             onChange={handleTagsChange}
           />

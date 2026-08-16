@@ -3211,7 +3211,6 @@ const RichEditorPane = ({
 
   const updatedLabel = formatDateTime(memo.updatedAt);
   const currentNotebookLabel = notebookOptions.find((notebook) => notebook.id === memo.notebookId)?.name ?? t("editor.notebookFallback");
-  const currentMarkdownForAi = getCurrentMarkdownForAi();
 
   const mobileDoneDisabled =
     saveMutation.isPending ||
@@ -3877,10 +3876,8 @@ const RichEditorPane = ({
               </Select>
             </div>
             <EditorTagPicker
-              contentMarkdown={currentMarkdownForAi}
               disabled={effectiveReadOnly}
               loadTags={() => repository.listTags()}
-              title={title}
               value={tagsText}
               onChange={(nextTagsText) => {
                 setTagsText(nextTagsText);
@@ -4449,7 +4446,7 @@ const RichEditorPane = ({
       <AiAssistantDialog
         open={aiAssistantOpen}
         title={title}
-        contentMarkdown={currentMarkdownForAi}
+        contentMarkdown={getCurrentMarkdownForAi()}
         selectionMarkdown={aiSelection?.contentMarkdown}
         onOpenChange={handleAiAssistantOpenChange}
         onApply={applyAiDraft}

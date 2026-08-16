@@ -32,8 +32,6 @@ import type {
   AiPromptTemplateCreateInput,
   AiPromptTemplateUpdateInput,
   AiStreamEvent,
-  AiTagSuggestionsRequestInput,
-  AiTagSuggestionsResponse,
 } from "@edgeever/shared";
 
 export type EdgeEverClientOptions = {
@@ -326,13 +324,6 @@ export const createEdgeEverClient = (options: EdgeEverClientOptions = {}) => {
         body: JSON.stringify({}),
       });
     },
-
-    suggestAiTags: (payload: AiTagSuggestionsRequestInput, signal?: AbortSignal) =>
-      request<AiTagSuggestionsResponse>("/api/v1/ai/tag-suggestions", {
-        method: "POST",
-        body: JSON.stringify(payload),
-        signal,
-      }),
 
     streamAiGeneration: async (
       payload: {
